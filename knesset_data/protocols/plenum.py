@@ -68,8 +68,8 @@ class PlenumProtocolFile(BaseProtocolFile):
 
     @cached_property
     def booklet_num_heb(self):
-        match = re.search(r'חוברת (.+?(?=NL))', self.header_text)
-        return match.groups()[0].strip() if match else None
+        match = re.search(r'(חוב\'|חוברת) (.+?(?=NL))', self.header_text)
+        return match.groups()[1].strip() if match else None
 
     @cached_property
     def booklet_meeting_num(self):
